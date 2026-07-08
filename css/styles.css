@@ -72,6 +72,10 @@ h2 {
   letter-spacing: -0.01em;
 }
 
+h2.center {
+  text-align: center;
+}
+
 h3 {
   font-size: 20px;
   font-weight: 700;
@@ -164,13 +168,39 @@ p {
 .hero {
   background: var(--bg-hero);
   color: var(--text-on-dark);
-  padding: 48px 0 40px;
+  padding: 56px 0 0;
+  text-align: center;
+  overflow: visible;
 }
 
 .hero__inner {
+  max-width: 700px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: center;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin: 0 0 20px;
+}
+
+.hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-line);
+  flex-shrink: 0;
 }
 
 .hero h1 {
@@ -182,12 +212,93 @@ p {
 .hero__sub {
   font-size: 18px;
   color: var(--text-on-dark-soft);
-  margin-bottom: 28px;
+  max-width: 540px;
 }
 
-.hero__media img {
-  border-radius: var(--radius);
+.hero__floating {
+  margin-top: 36px;
+  margin-bottom: -64px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.hero__floating img {
+  max-width: 760px;
   margin: 0 auto;
+  border-radius: var(--radius);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ===================== MEDIA (as featured on) ===================== */
+.media-section {
+  padding-top: 100px;
+}
+
+.media-strip {
+  margin: 28px 0;
+}
+
+.media-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.media-grid img {
+  border-radius: 12px;
+}
+
+/* ===================== DUAL CARDS ===================== */
+.dual-cards {
+  display: grid;
+  gap: 24px;
+}
+
+.dual-card {
+  background: var(--bg-hero);
+  color: var(--text-on-dark);
+  border-radius: 28px;
+  padding: 32px 28px 0;
+  overflow: hidden;
+}
+
+.dual-card--alt {
+  background: var(--bg-pain);
+}
+
+.dual-card__body h2 {
+  color: var(--text-on-dark);
+  font-size: 22px;
+}
+
+.dual-card__list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.dual-card__list li {
+  font-size: 14px;
+  color: var(--text-on-dark-soft);
+}
+
+.dual-card__list li strong {
+  display: block;
+  color: var(--text-on-dark);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.dual-card .pain-list {
+  margin: 16px 0 0;
+}
+
+.dual-card__media {
+  margin: 24px -28px 0;
+  width: calc(100% + 56px);
 }
 
 /* ===================== CHECK LIST ===================== */
@@ -217,6 +328,36 @@ p {
   background: var(--green-mid) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 8.5L6.2 11.5L13 4.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 12px;
 }
 
+/* ===================== ICON GRID ===================== */
+.icon-grid {
+  display: grid;
+  gap: 28px;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-item p {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bg-hero);
+  margin: 0;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--green-mid) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 8.5L6.2 11.5L13 4.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 18px;
+}
+
 /* ===================== GRID / CARDS ===================== */
 .grid {
   display: grid;
@@ -224,30 +365,17 @@ p {
   margin-top: 24px;
 }
 
-.grid--4 { grid-template-columns: 1fr; }
 .grid--2 { grid-template-columns: 1fr; }
-
-.card {
-  background: var(--bg-light);
-  border-radius: var(--radius);
-  padding: 24px;
-}
-
-.card img {
-  border-radius: 12px;
-  margin-bottom: 16px;
-}
-
-.card h3,
-.bonus-card h3 {
-  font-size: 18px;
-  color: var(--bg-hero);
-}
 
 .bonus-card {
   background: var(--bg-light);
   border-radius: var(--radius);
   padding: 24px;
+}
+
+.bonus-card h3 {
+  font-size: 18px;
+  color: var(--bg-hero);
 }
 
 .offer-visual {
@@ -354,20 +482,6 @@ p {
 .step img {
   border-radius: var(--radius);
   margin-bottom: 16px;
-}
-
-/* ===================== MEDIA ===================== */
-.media-strip {
-  margin: 28px 0;
-}
-
-.media-grid {
-  display: grid;
-  gap: 16px;
-}
-
-.media-grid img {
-  border-radius: 12px;
 }
 
 /* ===================== RESULTS ===================== */
@@ -499,13 +613,33 @@ p {
   margin-bottom: 24px;
 }
 
-/* ===================== ABOUT ===================== */
+/* ===================== ABOUT / WHY US ===================== */
 .about {
   max-width: 760px;
 }
 
 .about p {
   font-size: 17px;
+}
+
+.eyebrow {
+  color: var(--green-mid);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.whyus .about {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.whyus .about p {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===================== FAQ ===================== */
@@ -588,10 +722,10 @@ p {
 
 /* ===================== RESPONSIVE ===================== */
 @media (min-width: 640px) {
-  .grid--4 { grid-template-columns: repeat(2, 1fr); }
   .grid--2 { grid-template-columns: repeat(2, 1fr); }
   .media-grid { grid-template-columns: repeat(3, 1fr); }
   .steps { grid-template-columns: repeat(3, 1fr); }
+  .icon-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 860px) {
@@ -600,17 +734,21 @@ p {
   h2 { font-size: 36px; line-height: 42px; }
   h3 { font-size: 22px; }
 
-  .hero { padding: 96px 0; }
-  .hero__inner {
-    flex-direction: row;
-    align-items: center;
-    gap: 56px;
-  }
-  .hero__content { flex: 1; }
-  .hero__media { flex: 1; }
+  .hero { padding: 96px 0 0; }
   .hero h1 { font-size: 44px; }
 
-  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .hero__floating {
+    margin-top: 48px;
+    margin-bottom: -120px;
+  }
+
+  .media-section { padding-top: 168px; }
+
+  .dual-cards { grid-template-columns: repeat(2, 1fr); }
+  .dual-card { padding: 40px 36px 0; }
+  .dual-card__media { margin: 32px -36px 0; width: calc(100% + 72px); }
+
+  .icon-grid { grid-template-columns: repeat(5, 1fr); gap: 20px; }
 
   .footer { padding: 56px 0; }
 }
